@@ -1,0 +1,50 @@
+
+$ht: red;
+$small: 100px;
+$medium: 150px;
+$big: 300px;
+
+@mixin circle ($x, $br,) {
+    width: $x;
+    height: $x;
+    -webkit-border-radius: $br;
+    -moz-border-radius: $br;
+    -ms-border-radius: $br;
+    border-radius: $br;
+    background-color: $bg-color;
+
+     @if $x == $small {
+         background-color: red;
+     }
+     $else if $x == $medium{
+         background-color: green;
+     }
+     $else{
+        background-color: blue;
+     }
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    .container{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        div:nth-child(1){
+            @include circle($small, 50%)
+        }  
+        div:nth-child(2){
+            @include circle($medium, 50%)
+        }      
+        div:nth-child(3){
+            @include circle($big, 50%)
+        }           
+    }
+}
